@@ -1708,7 +1708,6 @@ struct of_flow_lightweight_stats_request : of_stats_request {
 /* Entry for OFPST_FLOW */
 struct of_flow_stats_entry {
     uint16_t length;
-    pad(2);
     uint8_t table_id;
     pad(1);
     uint32_t duration_sec;
@@ -1718,6 +1717,7 @@ struct of_flow_stats_entry {
     uint16_t hard_timeout;
     enum ofp_flow_mod_flags flags;
     uint16_t importance;
+    pad(2);
     uint64_t cookie;
     uint64_t packet_count;
     uint64_t byte_count;
