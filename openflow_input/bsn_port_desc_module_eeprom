@@ -1,4 +1,4 @@
-// Copyright 2016, Big Switch Networks, Inc.
+// Copyright 2018, Big Switch Networks, Inc.
 //
 // LoxiGen is licensed under the Eclipse Public License, version 1.0 (EPL), with
 // the following special exception:
@@ -24,21 +24,13 @@
 // WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
 // EPL for the specific language governing permissions and limitations
 // under the EPL.
-
 #version 5
 #version 6
 
-enum ofp_bsn_fec_config_state(wire_type=uint32_t) {
-    OFP_BSN_FEC_CONFIG_STATE_UNSET = 0,
-    OFP_BSN_FEC_CONFIG_STATE_ENABLED = 1,
-    OFP_BSN_FEC_CONFIG_STATE_DISABLED = 2,
-};
-
-struct of_port_desc_prop_bsn_forward_error_correction : of_port_desc_prop_bsn {
-    uint16_t type == 0xffff;
-    uint16_t length;
-    uint32_t experimenter == 0x5c16c7;
-    uint32_t exp_type == 2;
-    enum ofp_bsn_fec_config_state configured; /* non-zero if FEC is configured */
-    uint32_t enabled;                         /* non-zero if FEC is enabled */
+struct of_port_desc_prop_bsn_sff_json : of_port_desc_prop_bsn {
+    uint16_t    type == 0xffff;
+    uint16_t    length;
+    uint32_t    experimenter == 0x5c16c7;
+    uint32_t    exp_type == 6;
+    of_octets_t data_json;
 };
